@@ -20,7 +20,7 @@ jobs:
       - name: Run hadolint
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: docker-compose.yml
+          dockerfile: Dockerfile
 
       - name: Run shellcheck
         uses: ludeeus/action-shellcheck@master
@@ -92,7 +92,7 @@ jobs:
           script: |
             cd /path/to/StackForge
             git pull origin main
-            cp .env.example .env 2>/dev/null || true
+            [ -f .env ] || cp .env.example .env
             docker compose pull
             docker compose up -d
             ./scripts/healthcheck.sh localhost

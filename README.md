@@ -15,6 +15,8 @@ One command. Self-hosted. Privacy-first. No GPU required.
 
 <br>
 
+![StackForge landing page](docs/screenshots/landing-hero.png)
+
 ![StackForge screenshot](docs/assets/screenshot.png)
 
 <br>
@@ -134,15 +136,14 @@ docker compose up -d
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `OLLAMA_MODELS` | `llama2,mistral` | Models to pull on startup |
+| `SERVER_IP` | *(required)* | Host IP used in service URLs (Tailscale IP recommended) |
+| `HONCHO_DB_PASSWORD` | `changeme` | PostgreSQL password (Honcho backend) — **change it** |
+| `HONCHO_TOKEN` | *(required)* | Honcho API auth token |
 | `QDRANT_PORT` | `6333` | Qdrant API port |
-| `HONCHO_PORT` | `8000` | Honcho API port |
+| `SVC_HONCHO_PORT` | `8000` | Honcho API port |
 | `SVC_SEARXNG_PORT` | `8080` | SearXNG port |
-| `POSTGRES_DB` | `stackforge` | PostgreSQL database name |
-| `POSTGRES_USER` | `stackforge` | PostgreSQL user |
-| `POSTGRES_PASSWORD` | *(generated)* | PostgreSQL password |
 | `COUCHDB_ADMIN_USER` | `admin` | CouchDB admin username |
-| `COUCHDB_ADMIN_PASSWORD` | `changeme` | CouchDB admin password |
+| `COUCHDB_ADMIN_PASSWORD` | `changeme` | CouchDB admin password — **change it** |
 
 Full reference in [`.env.example`](.env.example).
 
@@ -154,6 +155,7 @@ StackForge/
 ├── docker-compose.headroom.yml   # Headroom monitoring add-on
 ├── docker-compose.portainer.yml  # Portainer container management
 ├── .env.example                  # Environment variable template
+├── bootstrap.sh                  # Interactive first-run setup wizard
 ├── index.html                    # Landing page
 ├── docs/
 │   └── assets/                   # Screenshots, banners, diagrams
@@ -163,6 +165,7 @@ StackForge/
 │   ├── install.sh                # Installation script
 │   ├── init-honcho.sh            # Honcho initialization
 │   ├── init-obsidian.sh          # Obsidian vault init
+│   ├── init-headroom.sh          # Headroom stack init
 │   └── install-browser-search.sh # Browser search tool setup
 ├── searxng/                      # SearXNG configuration
 ├── honcho/                       # Honcho config

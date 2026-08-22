@@ -16,7 +16,7 @@ from contextlib import asynccontextmanager
 
 import httpx
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
 from fastapi.static import StaticFiles
 
 
@@ -380,6 +380,26 @@ async def api_status():
 @app.get("/api/healthz")
 async def healthz():
     return {"ok": True}
+
+
+@app.get("/metrics")
+async def metrics_page():
+    return RedirectResponse("/metrics.html")
+
+
+@app.get("/geo")
+async def geo_page():
+    return RedirectResponse("/geo.html")
+
+
+@app.get("/agents")
+async def agents_page():
+    return RedirectResponse("/agents.html")
+
+
+@app.get("/mesh")
+async def mesh_page():
+    return RedirectResponse("/mesh.html")
 
 
 app.mount("/", StaticFiles(directory="/app/static", html=True), name="static")

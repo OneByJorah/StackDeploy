@@ -12,7 +12,7 @@ port/API exactly as before — this just gives you one screen to see all of them
 1. Drop this whole `noc-dashboard/` folder into the root of your `StackForge` repo,
    alongside `docker-compose.yml`.
 2. Copy `docker-compose.dashboard.yml` to the repo root too (next to
-   `docker-compose.honcho.yml` / `docker-compose.headroom.yml`).
+   `docker-compose.yml` / `docker-compose.headroom.yml`).
 3. (Optional) add to `.env`:
    ```
    PORTAINER_URL=http://<portainer-host>:9000

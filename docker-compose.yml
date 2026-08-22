@@ -262,7 +262,7 @@ services:
       - STNODEFAULTUSER=true
     logging: *default-log
     healthcheck:
-      test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:${SVC_SYNCTHING_UI_PORT:-8384}/', timeout=5)\""]
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:${SVC_SYNCTHING_UI_PORT:-8384}/ || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
